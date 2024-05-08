@@ -1,14 +1,15 @@
-# Message Queue
+# CDN
 
 ## Contents
 
 - [History](#history)
-  - [Contents](#contents)
-  - [What is a message queues?](#what-is-a-message-queues)
-  - [Why do we need message queue?](#why-do-we-need-message-queue)
-  - [Benefits of Message Queues \[2\]](#benefits-of-message-queues-2)
-  - [Types of Message Queue](#types-of-message-queue)
-    - [Message Serialization](#message-serialization)
+  - [Modern CDN](#modern-cdn)
+  - [CDN Technology?](#wtechnology)
+  - [DNS-based routing](#dns-routing)
+  - [Anycast](#antcast)
+  - [Performance](#performance)
+  - [Benefits](#benefits)
+  - [References](#references)
 
 ## What is CDN?
 
@@ -16,24 +17,24 @@
 
 CDN or content delivery network has been around since the late 90s. It was originally developed to speed up the delivery of static HTML content for users all aorund the world.
 
-## Modern CDN?
+## Modern CDN?(#modern-cdn)
 
 At a fundamental level, a CDN brings content closer to the user. This improves the performance of a web servie as perceived by the user. To bring a service closer to the user CDN deploys servers at hundreds of locations all over the world. These server locations are called Point of Presence, PoPs. A server inside the PoP is now commonly called an edge server. Having many PoPs all over the world ensures that every user can reach a fast-edge server close to them.
 
-## CDN Technology
+## CDN Technology(#technology)
 
 1. DNS-based routing
 2. Anycast
 
-## DNS-based routing
+## DNS-based routing(#dns-routing)
 
 With DNS-based routing, each PoP has it's own IP address. When the user looks up the IP address for the CDN, DNS returns the IP address of the PoP closest to them.
 
-## Anycast
+## Anycast(#antcast)
 
 In anycast all PoPs has the same IP address. When a request comes into the anycast network for that Ip address, the network sends the request to the PoP that is closest to the requester. Each edge server acts as a reverse proxy with a huge content cache.
 
-### Performance
+### Performance(#performance)
 
 1.Static contents are cached on the edge server in this content cache. If a piece of content is in the cache, it could be quickly retured to the user. Sice the edge server only asks for the copy of the static content from the origin server if it is not in it's content.
 
@@ -41,7 +42,7 @@ In anycast all PoPs has the same IP address. When a request comes into the anyca
 
 3. The edge server also serves a very important role in the modern HTTP stack. All TLS connection terminates at the edge server. TLS hanshake are expensive. The commonly used TLS versions like TLS 1.2 take several network round trips to established. By terminating the TLS connection at the edge, it significantly reduces the latency for the user to establish an encrypted TCP connection. This is one reason why many modern applications send even dynamic uncachable HTTP content over the CDN.
 
-### Benefits
+### Benefits(#benefits)
 
 # Security:
 
@@ -51,4 +52,6 @@ All modern CDNs have huge network capacity at the edge. This is the key to provi
 
 As they are ditributed, by having copies of content available in many PoPs, a CDN can withstand many more hardware failures than the original servers.
 
-## References
+## References(#references)
+
+https://www.youtube.com/watch?v=RI9np1LWzqw
