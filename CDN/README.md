@@ -28,13 +28,19 @@ At a fundamental level, a CDN brings content closer to the user. This improves t
 
 ## DNS-based routing
 
+![](./images/dns-routing.png)
+
 With DNS-based routing, each PoP has it's own IP address. When the user looks up the IP address for the CDN, DNS returns the IP address of the PoP closest to them.
 
 ## Anycast
 
+![](./images/anycast.png)
+
 In anycast all PoPs has the same IP address. When a request comes into the anycast network for that Ip address, the network sends the request to the PoP that is closest to the requester. Each edge server acts as a reverse proxy with a huge content cache.
 
 ### Performance
+
+![](./images/where.png)
 
 1.Static contents are cached on the edge server in this content cache. If a piece of content is in the cache, it could be quickly retured to the user. Sice the edge server only asks for the copy of the static content from the origin server if it is not in it's content.
 
